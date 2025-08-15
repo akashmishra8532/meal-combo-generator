@@ -2,6 +2,22 @@
 
 A beautiful, responsive web application that generates personalized meal combinations for the entire week. The app features a modern, attractive design with smooth animations and excellent mobile responsiveness.
 
+
+## 📸 Screenshots
+
+### 🖥️ Home View
+![Desktop View](./screenshot/Homepage.png)
+
+### Meal for all day
+![MealofAllDay View](./screenshot/MealForAllDay.png) 
+
+### ComboMeal view
+![ComboMeal View](./screenshot/ComboMeal.png)
+
+### 📱 Mobile View
+![Mobile View](./screenshot/MobileView.png)
+
+
 ## ✨ Features
 
 ### 🍽️ Weekly Meal Planning

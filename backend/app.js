@@ -287,18 +287,18 @@ app.post('/generate-combos', async (req, res) => {
         const usedItemsForThisDay = new Set();
 
         // Determine day profile
-        let dayProfileRemark = "A balanced selection of flavors.";
-        let dayProfileType = "balanced"; 
+    let dayProfileRemark = "A balanced selection of flavors.";
+    let dayProfileType = "balanced"; 
         
         switch (currentDay) {
-            case 'monday':
-                dayProfileRemark = "Emphasizing a 'Very Sweet' profile to start the week, offering delightful and comforting flavors.";
-                dayProfileType = "sweet";
-                break;
-            case 'friday':
-                dayProfileRemark = "A 'Spicy' profile to kick off the weekend, featuring bold and exciting tastes!";
-                dayProfileType = "spicy";
-                break;
+        case 'monday':
+            dayProfileRemark = "Emphasizing a 'Very Sweet' profile to start the week, offering delightful and comforting flavors.";
+            dayProfileType = "sweet";
+            break;
+        case 'friday':
+            dayProfileRemark = "A 'Spicy' profile to kick off the weekend, featuring bold and exciting tastes!";
+            dayProfileType = "spicy";
+            break;
             case 'saturday':
                 dayProfileRemark = "A 'Spicy' profile for the weekend, featuring bold and exciting tastes!";
                 dayProfileType = "spicy";
@@ -306,48 +306,48 @@ app.post('/generate-combos', async (req, res) => {
             case 'sunday':
                 dayProfileRemark = "A 'Sweet' profile to end the week, offering delightful and comforting flavors.";
                 dayProfileType = "sweet";
-                break;
-            case 'tuesday':
-            case 'wednesday':
-            case 'thursday':
-                dayProfileRemark = "A 'Balanced' profile for a steady mid-week experience, ensuring a harmonious blend of flavors.";
-                dayProfileType = "balanced";
-                break;
-            default:
-                dayProfileRemark = "A general balanced selection, offering a satisfying variety for any day.";
-                dayProfileType = "balanced";
-                break;
-        }
+            break;
+        case 'tuesday':
+        case 'wednesday':
+        case 'thursday':
+            dayProfileRemark = "A 'Balanced' profile for a steady mid-week experience, ensuring a harmonious blend of flavors.";
+            dayProfileType = "balanced";
+            break;
+        default:
+            dayProfileRemark = "A general balanced selection, offering a satisfying variety for any day.";
+            dayProfileType = "balanced";
+            break;
+    }
 
         // Generate 3 combos for this day
-        for (let i = 0; i < 3; i++) {
-            let combo = null;
-            let attempts = 0;
+    for (let i = 0; i < 3; i++) {
+        let combo = null;
+        let attempts = 0;
             const MAX_COMBO_ATTEMPTS = 5000; // Reduced for faster generation
-
+       
             // Add some randomization by shuffling the menu selection each time
-            const { selectedMainCourses, selectedSideDishes, selectedDrinks } = selectSessionMenu();
-            
+        const { selectedMainCourses, selectedSideDishes, selectedDrinks } = selectSessionMenu();
+
             // Shuffle the arrays to get different combinations each time
             const shuffledMainCourses = [...selectedMainCourses].sort(() => Math.random() - 0.5);
             const shuffledSideDishes = [...selectedSideDishes].sort(() => Math.random() - 0.5);
             const shuffledDrinks = [...selectedDrinks].sort(() => Math.random() - 0.5);
-
-            while (combo === null && attempts < MAX_COMBO_ATTEMPTS) {
-                const potentialCombo = generateSingleCombo(
+        
+        while (combo === null && attempts < MAX_COMBO_ATTEMPTS) {
+            const potentialCombo = generateSingleCombo(
                     shuffledMainCourses,
                     shuffledSideDishes,
                     shuffledDrinks,
                     usedItemsForThisDay, 
-                    dayProfileType 
-                );
+                dayProfileType 
+            );
 
-                if (potentialCombo) {
-                    const comboHash = generateComboHash([
-                        potentialCombo.main_course,
-                        potentialCombo.side_dish,
-                        potentialCombo.drink
-                    ]);
+            if (potentialCombo) {
+                const comboHash = generateComboHash([
+                    potentialCombo.main_course,
+                    potentialCombo.side_dish,
+                    potentialCombo.drink
+                ]);
 
                     const existsLocally = usedComboHashes.has(comboHash);
 
