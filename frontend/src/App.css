@@ -1,38 +1,115 @@
+/* Enhanced responsive design and animations */
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #7c3aed, #db2777);
+}
+
+/* Animation delays for staggered effects */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Enhanced focus states */
+.focus-ring:focus {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 2px;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+  .text-responsive {
+    font-size: 0.875rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media (min-width: 641px) and (max-width: 1024px) {
+  .text-responsive {
+    font-size: 1rem;
+  }
 }
 
-.App-link {
-  color: #61dafb;
+@media (min-width: 1025px) {
+  .text-responsive {
+    font-size: 1.125rem;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Enhanced button hover effects */
+.btn-hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Card hover animations */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Loading animation enhancements */
+.loading-dots::after {
+  content: '';
+  animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+  0%, 20% { content: ''; }
+  40% { content: '.'; }
+  60% { content: '..'; }
+  80%, 100% { content: '...'; }
+}
+
+/* Gradient text animation */
+.gradient-text {
+  background: linear-gradient(-45deg, #8b5cf6, #ec4899, #3b82f6, #10b981);
+  background-size: 400% 400%;
+  animation: gradient-shift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
