@@ -42,7 +42,7 @@ function App() {
     setProfileRemarks('');
 
     try {
-      const response = await fetch('http://localhost:3001/generate-combos', {
+      const response = await fetch('https://meal-combo-generator.onrender.com/generate-combos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
