@@ -2,6 +2,8 @@
 
 A beautiful, responsive web application that generates personalized meal combinations for the entire week. The app features a modern, attractive design with smooth animations and excellent mobile responsiveness.
 
+## 🌐 Live Demo  
+Check out the live version here:
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20Here-brightgreen?style=for-the-badge&logo=vercel)](https://meal-combo-generator.vercel.app/)
 
